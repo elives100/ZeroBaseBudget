@@ -37,6 +37,7 @@ app.use(
     secret: process.env.SESSION_COOKIEKEY,
     saveUninitialized: false,
     resave: false,
+    sameSite: "none",
     store: new MongoStore({
       mongooseConnection: mongoose.connection,
     }),
@@ -65,16 +66,17 @@ mongoose.connect(
   },
   () => console.log("connected to mongo atlas")
 );
-
+/*
 if (process.env.NODE_ENV === "production") {
   //Handle production
   app.use(express.static(path.join(__dirname, "/public")));
-
+  console.log("production");
   // Redirect all requests to `index.html`
   app.get("/*", (req, res) => {
     res.sendFile(path.join(__dirname, "/public/index.html"));
   });
 }
+*/
 //Start app
 app.listen(port, () => {
   console.log(`Server is on port ${port}`);

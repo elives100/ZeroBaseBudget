@@ -24,7 +24,7 @@
 
           <form action>
             <div v-for="(expense, index) in expenseButton" :key="index">
-             <expense-button
+              <expense-button
                 @input="checkIt(expense)"
                 @deleted="tryIt(expense)"
                 @confirm="confirmExpense(expense)"
@@ -46,10 +46,10 @@
             </div>
           </form>
         </div>
-      <div v-else class="col">
+        <div v-else class="col">
           <panel></panel>
           <div class="arrowContainer">
-          <span class="arrowDown">&darr;</span>
+            <span class="arrowDown">&darr;</span>
           </div>
           <router-link class="goToForm" tag="button" to="/budgetform">Create Budget</router-link>
         </div>
@@ -61,13 +61,13 @@
 <script>
 import axios from "axios";
 import Expenses from "../components/expenses.vue";
-import navbarCheck from "../components/navbars/navCheck.vue"
-import navCreate from "../components/navbars/navCreate.vue"
+import navbarCheck from "../components/navbars/navCheck.vue";
+import navCreate from "../components/navbars/navCreate.vue";
 export default {
   components: {
     "expense-button": Expenses,
     "navbar-check": navbarCheck,
-    "navbar": navCreate
+    navbar: navCreate
   },
   data() {
     return {
@@ -104,7 +104,7 @@ export default {
       expense.subExpense = null;
       this.showSubmit = false;
     },
-      updateBudget() {
+    updateBudget() {
       if (confirm("Are you sure you want to update this")) {
         axios
           .put("/api/budget", {
@@ -147,6 +147,7 @@ export default {
       })
       .then(res => {
         next(vm => {
+          console.log("it works");
           if (res.data.budget.length > 0) {
             vm.myExpense = res.data.budget;
             vm.earnings = res.data.budget[0].earnings;
@@ -201,11 +202,11 @@ span {
   font-size: 20px;
 }
 
-.arrowDown{
+.arrowDown {
   font-size: 50px;
 }
 
-.goToForm{
+.goToForm {
   padding: 15px;
   border: 1px dotted;
   border-radius: 20px;

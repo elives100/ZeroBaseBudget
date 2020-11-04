@@ -14,7 +14,7 @@ router.get(
 
 router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
   console.log("redirected to home");
-  res.redirect("/userprofile");
+  res.redirect("http://localhost:8080/userprofile");
 });
 
 //Logout

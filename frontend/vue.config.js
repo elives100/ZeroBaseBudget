@@ -7,9 +7,6 @@ module.exports = {
       "/api": {
         target: "http://localhost:3000",
       },
-   "/auth/usergoogle": {
-        target: "http://localhost:8080",
-      },
     },
   },
 };
