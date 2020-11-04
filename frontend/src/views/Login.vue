@@ -6,7 +6,8 @@
       <h2>Sign in</h2>
       <a
         class="btn btn-danger"
-        href="localhost:3000/auth/usergoogle"
+        target="_self"
+        href="http://localhost:3000/auth/usergoogle"
         style="width:12em;"
       >Sign in with Google</a>
     </div>

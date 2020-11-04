@@ -9,13 +9,15 @@
       <div class="collapse navbar-collapse" id="navbar1">
         <ul class="navbar-nav nav nav-pills ml-auto">
           <li class="nav-item">
-            <router-link class="nav-link profile" to="/userprofile"><span>Profile</span></router-link>
+            <router-link class="nav-link profile" to="/userprofile">
+              <span>Profile</span>
+            </router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link mybudg" to="/mybudget">My Budget</router-link>
           </li>
           <li class="nav-item">
-            <a href="/auth/logout" class="btn logout">Logout</a>
+            <a target="_self" href="http://localhost:3000/auth/logout" class="btn logout">Logout</a>
           </li>
         </ul>
       </div>
@@ -34,17 +36,16 @@ export default {
   text-decoration: underline;
 }
 
-.logout{
+.logout {
   background-color: rgb(104, 0, 0);
   color: wheat;
 }
 
-.profile{
+.profile {
   background-color: rgb(9, 17, 129);
 }
 
-span{
-    color: wheat;
-
+span {
+  color: wheat;
 }
 </style>

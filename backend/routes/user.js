@@ -20,7 +20,7 @@ router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
 //Logout
 router.get("/logout", (req, res) => {
   req.session.destroy(() => {
-    return res.redirect("/");
+    res.redirect("http://localhost:8080/");
   });
 });
 
