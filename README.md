@@ -1,6 +1,6 @@
 # ZeroBaseBudget
 
-Overview
+**Overview**
 
 Zero Base Budget is the idea of allocating all of your monthly payment to some expense.  If you have monthly payments left over it has to go toward something.  Hence,   monthly payments - expenses = 0.
 
