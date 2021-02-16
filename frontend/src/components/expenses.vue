@@ -19,8 +19,17 @@
           v-if="showConfirm"
           @click="confirmExpense(expense)"
           type="button"
-        >✓</button>
-        <button v-if="showDelete" class="btn delete" @click="undoExpense" type="button">x</button>
+        >
+          ✓
+        </button>
+        <button
+          v-if="showDelete"
+          class="btn delete"
+          @click="undoExpense"
+          type="button"
+        >
+          x
+        </button>
       </div>
     </div>
   </div>
@@ -31,13 +40,13 @@ export default {
   props: {
     expenseButton: Array,
     expense: Object,
-    value: Number
+    value: Number,
   },
   data() {
     return {
       toggleInput: false,
       showDelete: false,
-      showConfirm: false
+      showConfirm: false,
     };
   },
   methods: {
@@ -56,8 +65,8 @@ export default {
     confirmExpense(expense) {
       this.showConfirm = false;
       this.$emit("confirm", expense);
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -67,7 +76,8 @@ export default {
   min-width: 90px;
   margin-bottom: 10px;
   margin-top: 20px;
-  background-color:rgb(20, 95, 3);
+  background-color: rgb(20, 95, 3);
+  box-shadow: 3px 3px 3px rgb(25, 26, 25);
 }
 
 .buttonClass {
@@ -81,7 +91,7 @@ export default {
 }
 
 .negativeAmounts {
-   background-color: rgb(104, 0, 0);
+  background-color: rgb(104, 0, 0);
   font-size: 20px;
 }
 
@@ -90,12 +100,15 @@ export default {
   color: wheat;
 }
 
-.confirm{
-background-color: rgb(104, 0, 0);
-color: wheat;
-}
-.delete{
+.confirm {
   background-color: rgb(9, 17, 129);
+  color: wheat;
+  box-shadow: 3px 3px 3px rgb(25, 26, 25);
+}
+.delete {
+  background-color: rgb(104, 0, 0);
+  box-shadow: 3px 3px 3px rgb(25, 26, 25);
+
   color: wheat;
 }
 </style>

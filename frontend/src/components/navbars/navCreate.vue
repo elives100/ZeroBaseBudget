@@ -3,7 +3,12 @@
     <div class="navbar-brand">Budgeting App</div>
 
     <div class="container">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbar1"
+      >
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbar1">
@@ -14,10 +19,17 @@
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link create" to="/budgetform">Create Budget</router-link>
+            <router-link class="nav-link create" to="/budgetform"
+              >Create Budget</router-link
+            >
           </li>
           <li class="nav-item">
-            <a target="_self" href="http://localhost:3000/auth/logout" class="btn logout">Logout</a>
+            <a
+              target="_self"
+              href="http://localhost:3000/auth/logout"
+              class="btn logout"
+              >Logout</a
+            >
           </li>
         </ul>
       </div>
@@ -27,7 +39,7 @@
 
 <script>
 export default {
-  name: "navBar"
+  name: "navBar",
 };
 </script>
 
@@ -39,10 +51,12 @@ export default {
 .logout {
   background-color: rgb(104, 0, 0);
   color: wheat;
+  box-shadow: 3px 3px 3px rgb(25, 26, 25);
 }
 
 .profile {
   background-color: rgb(9, 17, 129);
+  box-shadow: 3px 3px 3px rgb(25, 26, 25);
 }
 
 span {

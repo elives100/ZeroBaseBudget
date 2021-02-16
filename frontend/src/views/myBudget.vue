@@ -24,13 +24,23 @@
             class="btn editBtn"
             type="button"
             v-if="editButton"
-          >Edit</button>
-          <button v-if="!editButton" @click="addExpense()" class="addButton mr-5 btn">+</button>
+          >
+            Edit
+          </button>
+          <button
+            v-if="!editButton"
+            @click="addExpense()"
+            class="addButton mr-5 btn"
+          >
+            +
+          </button>
           <button
             v-if="!editButton"
             @click="deleteExpense(idx)"
             class="deleteButton btn "
-          >-</button>
+          >
+            -
+          </button>
         </div>
         <div class="row">
           <div
@@ -70,15 +80,26 @@
               @click="confirmExpense(idx)"
               slot="confirmButton"
               v-if="showInput && idx === myExpenses.length - 1"
-            >Confirm</button>
+            >
+              Confirm
+            </button>
           </div>
         </div>
       </div>
       <div class="mt-5">
-        <button class="btn deleteAll" @click="deleteBudget()">Delete All</button>
+        <button class="btn deleteAll" @click="deleteBudget()">
+          Delete All
+        </button>
       </div>
       <br />
-      <button :disabled="myExpenses.length < 1" class="btn submitButton" @click="submitBudget()" type="submit">Submit</button>
+      <button
+        :disabled="myExpenses.length < 1"
+        class="btn submitButton"
+        @click="submitBudget()"
+        type="submit"
+      >
+        Submit
+      </button>
     </div>
   </div>
 </template>
@@ -89,7 +110,7 @@ import ExpensePanel from "../components/expensePanel.vue";
 
 export default {
   components: {
-    "expense-panel": ExpensePanel
+    "expense-panel": ExpensePanel,
   },
   name: "myBudget",
   data() {
@@ -101,7 +122,7 @@ export default {
       showInput: false,
       showDelete: false,
       showSubmit: false,
-      editButton: true
+      editButton: true,
     };
   },
   methods: {
@@ -125,7 +146,7 @@ export default {
       this.myExpenses.push({
         expensesKey: "",
         expensesValue: null,
-        subExpense: null
+        subExpense: null,
       });
       this.showInput = true;
       this.showDelete = false;
@@ -137,7 +158,7 @@ export default {
     deleteBudget() {
       axios
         .post("/api/budget/delete", {
-          id: this.identifier
+          id: this.identifier,
         })
         .then(() => {
           this.$router.push("/userprofile");
@@ -148,16 +169,16 @@ export default {
         .put("/api/budget", {
           id: this.identifier,
           earning: this.earnings,
-          expense: this.myExpenses
+          expense: this.myExpenses,
         })
         .then(() => {
           this.$router.push("/userprofile");
         })
-        .catch(err => {
+        .catch((err) => {
           this.errored2 = true;
           this.errored = err;
         });
-    }
+    },
   },
   computed: {
     addAllExpenses() {
@@ -165,28 +186,28 @@ export default {
         acc += Number(curr.expensesValue);
         return acc;
       }, 0);
-    }
+    },
   },
   beforeRouteEnter(to, from, next) {
     axios
       .get("/api/budget", {
         headers: { "Content-Type": "application/json" },
-        withCredentials: true
+        withCredentials: true,
       })
-      .then(res => {
-        next(vm => {
+      .then((res) => {
+        next((vm) => {
           vm.identifier = res.data._id;
           vm.myExpenses = res.data.budget[0].expenses;
           vm.earnings = res.data.budget[0].earnings;
         });
       })
-      .catch(err => {
-        next(vm => {
+      .catch((err) => {
+        next((vm) => {
           console.log(err.response);
           vm.errored = true;
         });
       });
-  }
+  },
 };
 </script>
 
@@ -206,6 +227,10 @@ export default {
   justify-content: center;
 }
 
+.btn {
+  box-shadow: 3px 3px 3px rgb(25, 26, 25);
+}
+
 .addButton {
   height: 35px;
   border-radius: 50%;
@@ -222,24 +247,25 @@ export default {
   background-color: rgb(104, 0, 0);
   color: wheat;
 }
-.deleteAll{
-      background-color: rgb(104, 0, 0);
-      color: wheat;
+.deleteAll {
+  background-color: rgb(104, 0, 0);
+  color: wheat;
 }
 
-.submitButton{
+.submitButton {
   background-color: rgb(9, 17, 129);
-   color: wheat;
+  color: wheat;
+  margin-bottom: 50px;
 }
 
-.confirmBtn{
+.confirmBtn {
   background-color: rgb(9, 17, 129);
   color: wheat;
 }
 
-.editBtn{
-    background-color: rgb(9, 17, 129);
-    color: wheat;
+.editBtn {
+  background-color: rgb(9, 17, 129);
+  color: wheat;
 }
 
 ::placeholder {

@@ -11,7 +11,7 @@
       <br />
       <slot name="inputKey"></slot>
     </div>
-    <hr>
+    <hr />
     <div class="card-body">{{ expense.expensesValue }}</div>
     <div class="blue">
       <slot name="inputValue"></slot>
@@ -26,11 +26,11 @@ export default {
   props: {
     expense: Object,
     myExpenses: Array,
-    showDelete: Boolean
+    showDelete: Boolean,
   },
   data() {
     return {
-      hover: false
+      hover: false,
     };
   },
   methods: {
@@ -39,23 +39,25 @@ export default {
     },
     addExpense(expense) {
       this.$emit("addOne", expense);
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style scoped>
-.card{
-    background-color:rgb(20, 95, 3);
-    color: wheat;
-    border-radius: 25px;
-    padding: 10px;
+.card {
+  background-color: rgb(20, 95, 3);
+  color: wheat;
+  border-radius: 25px;
+  padding: 10px;
+  box-shadow: 3px 3px 3px rgb(25, 26, 25);
 }
 
 .deleteMe {
   border-color: rgb(192, 20, 20);
   border-width: 1.5px;
   cursor: pointer;
+  box-shadow: 3px 3px 3px rgb(25, 26, 25);
 }
 
 .highlightIt {

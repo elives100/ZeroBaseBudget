@@ -13,7 +13,6 @@
           </p>
         </div>
       </div>
-      <span class="arrowRight">&rarr;</span>
       <div class="card">
         <div class="card-header ">
           <h5>List Your Expense</h5>
@@ -25,7 +24,6 @@
           </p>
         </div>
       </div>
-            <span class="arrowRight">&rarr;</span>
       <div class="card">
         <div class="card-header ">
           <h5>Submit</h5>
@@ -46,7 +44,7 @@ export default {
   name: "panel",
   data() {
     return {};
-  }
+  },
 };
 </script>
 
@@ -56,30 +54,39 @@ export default {
   justify-content: center;
 }
 
-.card{
-  background-color:rgb(20, 95, 3);
+.card {
+  background: linear-gradient(
+    232deg,
+    rgba(131, 131, 48, 1) 0%,
+    rgba(51, 129, 52, 1) 100%
+  );
   padding: 10px;
   line-height: 25px;
   border-radius: 25px;
-  color: wheat;
+  color: rgb(26, 22, 22);
+  box-shadow: 3px 3px 3px rgb(25, 26, 25);
 }
 
-.arrowRight{
+.arrowRight {
   font-size: 40px;
 }
 
-.card-deck{
+.card-deck {
   display: flex;
   align-items: center;
 }
 
-@media only screen and (max-width: 414px) {
+@media only screen and (max-width: 484px) {
   .card {
-    width: 15rem;
+    width: 13rem;
   }
 
   .card-text {
-    font-size: 15px;
+    font-size: 12px;
+  }
+
+  h5 {
+    font-size: 17px;
   }
 }
 </style>

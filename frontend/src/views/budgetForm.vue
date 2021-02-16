@@ -27,9 +27,12 @@
             <span
               v-if="getDifference !== 0 && earnings > 0"
               class="alert-danger"
-            >Can't submit untill all income is accounted for</span>
+              >Can't submit untill all income is accounted for</span
+            >
 
-            <span class="alert-danger" v-else-if="errored">{{ errResponse }}</span>
+            <span class="alert-danger" v-else-if="errored">{{
+              errResponse
+            }}</span>
           </div>
           <div class="row outer">
             <div
@@ -56,18 +59,28 @@
               </div>
             </div>
             <div class="form-group col-md-3 col-sm-12 addDelete">
-              <button class="btn addExpense" type="button" @click="addInputs()">Add</button>
+              <button class="btn addExpense" type="button" @click="addInputs()">
+                Add
+              </button>
               <button
                 v-if="expenses.length > 1"
                 class="btn deleteInput ml-3"
                 type="button"
                 @click="deleteInputs()"
-              >Delete</button>
+              >
+                Delete
+              </button>
             </div>
           </div>
           <div class="submit mb-5">
             <div v-if="getDifference == 0 && earnings > 0" class="row">
-              <button class="btn submitButton" type="submit" @click.stop.prevent="submitBudget">Submt</button>
+              <button
+                class="btn submitButton"
+                type="submit"
+                @click.stop.prevent="submitBudget"
+              >
+                Submt
+              </button>
             </div>
           </div>
         </form>
@@ -88,14 +101,14 @@ export default {
         {
           expensesKey: "",
           expensesValue: null,
-          subExpense: null
-        }
+          subExpense: null,
+        },
       ],
       result: "",
       isRead: true,
       identifier: "",
       errored: false,
-      errResponse: "Something went wrong, please try again later"
+      errResponse: "Something went wrong, please try again later",
     };
   },
   methods: {
@@ -103,7 +116,7 @@ export default {
       this.expenses.push({
         expensesKey: "",
         expensesValue: null,
-        subExpense: null
+        subExpense: null,
       });
     },
     deleteInputs() {
@@ -114,28 +127,28 @@ export default {
         .post("/api/budget", {
           id: this.identifier,
           earnings: this.earnings,
-          expenses: this.expenses
+          expenses: this.expenses,
         })
-        .then(response => {
+        .then((response) => {
           this.result = response;
           this.$router.push("/userprofile");
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err);
           this.errored = true;
         });
-    }
+    },
   },
   created() {
     axios
       .get("/api/budget", {
         headers: { "Content-Type": "application/json" },
-        withCredentials: true
+        withCredentials: true,
       })
-      .then(res => {
+      .then((res) => {
         this.identifier = res.data._id;
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
         this.errored = true;
       });
@@ -149,8 +162,8 @@ export default {
     },
     getDifference() {
       return this.earnings - this.getTotal;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -159,20 +172,22 @@ export default {
   margin-bottom: 15px;
 }
 
-.submitButton{
-    background-color: rgb(9, 17, 129);
-    color: wheat;
-}
-
-.addExpense{
-    background-color:rgb(20, 95, 3);
+.submitButton {
+  background-color: rgb(9, 17, 129);
   color: wheat;
+  box-shadow: 1px 1px 1px 1px black;
 }
 
-.deleteInput{
-      background-color: rgb(9, 17, 129);
-      color: wheat;
+.addExpense {
+  background-color: rgb(20, 95, 3);
+  color: wheat;
+  box-shadow: 1px 1px 1px 1px black;
+}
 
+.deleteInput {
+  background-color: rgb(9, 17, 129);
+  color: wheat;
+  box-shadow: 1px 1px 1px 1px black;
 }
 
 .inputRow {

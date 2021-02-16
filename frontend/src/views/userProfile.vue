@@ -15,11 +15,16 @@
         </div>
       </div>
       <div class="row">
-        <div v-if="Array.isArray(myExpense) && myExpense.length !== 0" class="col-md-12">
+        <div
+          v-if="Array.isArray(myExpense) && myExpense.length !== 0"
+          class="col-md-12"
+        >
           <div class="yourBalance">
             Your monthly balance
             <br />
-            <span :class="{ negativeAmount: earnings <= 0 }">${{ earnings }}</span>
+            <span :class="{ negativeAmount: earnings <= 0 }"
+              >${{ earnings }}</span
+            >
           </div>
 
           <form action>
@@ -36,22 +41,27 @@
 
               <div>
                 <p>Amount Left</p>
-                <p
-                  :class="{ negativeAmount: expense.expensesValue <= 0 }"
-                >${{ expense.expensesValue }}</p>
+                <p :class="{ negativeAmount: expense.expensesValue <= 0 }">
+                  ${{ expense.expensesValue }}
+                </p>
               </div>
             </div>
             <div class="submitClass">
-              <input v-if="showSubmit" @click="updateBudget()" type="submit" value="Submit" />
+              <input
+                v-if="showSubmit"
+                @click="updateBudget()"
+                type="submit"
+                value="Submit"
+              />
             </div>
           </form>
         </div>
         <div v-else class="col">
           <panel></panel>
-          <div class="arrowContainer">
-            <span class="arrowDown">&darr;</span>
-          </div>
-          <router-link class="goToForm" tag="button" to="/budgetform">Create Budget</router-link>
+          <div class="arrowContainer"></div>
+          <router-link class="goToForm" tag="button" to="/budgetform"
+            >Create Budget</router-link
+          >
         </div>
       </div>
     </div>
@@ -67,7 +77,7 @@ export default {
   components: {
     "expense-button": Expenses,
     "navbar-check": navbarCheck,
-    navbar: navCreate
+    navbar: navCreate,
   },
   data() {
     return {
@@ -80,7 +90,7 @@ export default {
       negativeAmount: true,
       identity: "",
       result: "",
-      showSubmit: false
+      showSubmit: false,
     };
   },
   methods: {
@@ -110,17 +120,17 @@ export default {
           .put("/api/budget", {
             id: this.identity,
             earning: this.earnings,
-            expense: this.expenseButton
+            expense: this.expenseButton,
           })
           .then(() => {
             this.$router.push("/mybudget");
           })
-          .catch(err => {
+          .catch((err) => {
             this.errored2 = true;
             this.errored = err;
           });
       }
-    }
+    },
   },
   computed: {
     addSubExpense() {
@@ -137,16 +147,16 @@ export default {
     },
     newEarnings() {
       return this.earnings - this.addSubExpense;
-    }
+    },
   },
   beforeRouteEnter(to, from, next) {
     axios
       .get("/api/budget", {
         headers: { "Content-Type": "application/json" },
-        withCredentials: true
+        withCredentials: true,
       })
-      .then(res => {
-        next(vm => {
+      .then((res) => {
+        next((vm) => {
           console.log("it works");
           if (res.data.budget.length > 0) {
             vm.myExpense = res.data.budget;
@@ -163,19 +173,20 @@ export default {
           }
         });
       })
-      .catch(err => {
-        next(vm => {
+      .catch((err) => {
+        next((vm) => {
           console.log(err.response);
           vm.errored = true;
         });
       });
-  }
+  },
 };
 </script>
 
 <style scoped>
 .yourBalance {
   font-size: 15px;
+  margin-bottom: 50px;
 }
 
 form {
@@ -208,7 +219,8 @@ span {
 
 .goToForm {
   padding: 15px;
-  border: 1px dotted;
+  border: 1px;
   border-radius: 20px;
+  box-shadow: 3px 3px 3px rgb(25, 26, 25);
 }
 </style>
