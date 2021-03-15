@@ -5,7 +5,7 @@ const app = express();
 const userRoutes = require("./routes/user");
 const budgetRoutes = require("./routes/budget");
 require("dotenv/config");
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 const cors = require("cors");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
@@ -44,6 +44,7 @@ app.use(
     cookie: {
       // secure: true,
       maxAge: 86400000,
+      SameSite: "none",
     },
   })
 );

@@ -26,7 +26,7 @@
           <li class="nav-item">
             <a
               target="_self"
-              href="http://localhost:3000/auth/logout"
+              href="http://localhost:5000/auth/logout"
               class="btn logout"
               >Logout</a
             >

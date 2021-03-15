@@ -20,7 +20,6 @@
           </div>
           <h2>Expenses</h2>
           <div>
-            <p>Expense Total- {{ getTotal }}</p>
             <p>Available Balance- {{ getDifference }}</p>
           </div>
           <div class="warning">
