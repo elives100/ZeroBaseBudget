@@ -14,13 +14,13 @@ router.get(
 
 router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
   console.log("redirected to home");
-  res.redirect("http://localhost:8080/userprofile");
+  res.redirect("https://zerobudget.herokuapp.com/userprofile");
 });
 
 //Logout
 router.get("/logout", (req, res) => {
   req.session.destroy(() => {
-    res.redirect("http://localhost:8080/");
+    res.redirect("https://zerobudget.herokuapp.com/");
   });
 });
 
