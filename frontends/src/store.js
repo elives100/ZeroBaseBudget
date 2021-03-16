@@ -63,10 +63,11 @@ export const store = new Vuex.Store({
           expenses: state.expenses,
         })
         .then((res) => {
+          router.push({ path: "/userprofile" });
+
           console.log(res.data.budget[0]);
           let newExpense = res.data.budget[0];
           commit("SUBMIT_BUDGET", newExpense);
-          router.push("/userprofile");
         });
     },
     addNewBudget({ commit, state }) {

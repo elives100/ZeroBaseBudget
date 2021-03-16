@@ -58,15 +58,13 @@
           <div class="submit py-3">
             <!-- v-if="getDifference == 0 && earnings > 0" -->
             <div class="row">
-              <router-link to="/userprofile">
-                <button
-                  class="btn submitButton"
-                  type="submit"
-                  @click.stop.prevent="submitBudget"
-                >
-                  Submit
-                </button>
-              </router-link>
+              <button
+                class="btn submitButton"
+                type="submit"
+                @click.stop.prevent="submitBudget"
+              >
+                Submit
+              </button>
             </div>
           </div>
         </div>
