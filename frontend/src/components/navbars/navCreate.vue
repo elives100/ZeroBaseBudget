@@ -62,4 +62,5 @@ export default {
 span {
   color: wheat;
 }
+
 </style>

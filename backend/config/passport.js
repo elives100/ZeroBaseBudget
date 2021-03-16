@@ -17,9 +17,9 @@ passport.use(
   new GoogleStrategy(
     {
       //options for the google strategy
-      callbackURL: "http://localhost:5000/auth/google/redirect",
-      clientID: process.env.GOOGLE_IDDEV,
-      clientSecret: process.env.GOOGLE_SECRETDEV,
+      callbackURL: "https://zerobudget.herokuapp.com/auth/google/redirect",
+      clientID: process.env.GOOGLE_ID,
+      clientSecret: process.env.GOOGLE_SECRET,
     },
     (accessToken, refreshToken, profile, done) => {
       //passport callback function

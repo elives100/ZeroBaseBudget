@@ -67,7 +67,7 @@ mongoose.connect(
   },
   () => console.log("connected to mongo atlas")
 );
-/*
+
 if (process.env.NODE_ENV === "production") {
   //Handle production
   app.use(express.static(path.join(__dirname, "/public")));
@@ -77,7 +77,7 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.join(__dirname, "/public/index.html"));
   });
 }
-*/
+
 //Start app
 app.listen(port, () => {
   console.log(`Server is on port ${port}`);
