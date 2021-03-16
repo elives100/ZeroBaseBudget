@@ -13,41 +13,40 @@ passport.deserializeUser((id, done) => {
   });
 });
 
-if (process.env.NODE_ENV === "production") {
-  passport.use(
-    new GoogleStrategy(
-      {
-        //options for the google strategy
-        callbackURL: "https://zerobudget.herokuapp.com/auth/google/redirect",
-        clientID: process.env.GOOGLE_ID,
-        clientSecret: process.env.GOOGLE_SECRET,
-      },
-      (accessToken, refreshToken, profile, done) => {
-        //passport callback function
-        console.log("passport callback fired");
-        //Check if user already exist in Db
-        User.findOne({ googleId: profile.id }).then((currentUser) => {
-          if (currentUser) {
-            //already have user
-            done(null, currentUser);
-            console.log(currentUser);
-          } else {
-            //create new user
-            new User({
-              username: profile.username,
-              name: profile.displayName,
-              googleId: profile.id,
-            })
-              .save()
-              .then((newUser) => {
-                console.log(`$was just created`);
-                done(null, newUser);
-              });
-          }
-        });
-      }
-    )
-  );
+passport.use(
+  new GoogleStrategy(
+    {
+      //options for the google strategy
+      callbackURL: "https://zerobudget.herokuapp.com/auth/google/redirect",
+      clientID: process.env.GOOGLE_ID,
+      clientSecret: process.env.GOOGLE_SECRET,
+    },
+    (accessToken, refreshToken, profile, done) => {
+      //passport callback function
+      console.log("passport callback fired");
+      //Check if user already exist in Db
+      User.findOne({ googleId: profile.id }).then((currentUser) => {
+        if (currentUser) {
+          //already have user
+          done(null, currentUser);
+          console.log(currentUser);
+        } else {
+          //create new user
+          new User({
+            username: profile.username,
+            name: profile.displayName,
+            googleId: profile.id,
+          })
+            .save()
+            .then((newUser) => {
+              console.log(`$was just created`);
+              done(null, newUser);
+            });
+        }
+      });
+    }
+  )
+); /*
 } else {
   passport.use(
     new GoogleStrategy(
@@ -84,3 +83,4 @@ if (process.env.NODE_ENV === "production") {
     )
   );
 }
+*/
