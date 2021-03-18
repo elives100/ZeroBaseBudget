@@ -19,14 +19,12 @@
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link mybudg" to="/mybudget"
-              >My Budget</router-link
-            >
+            <slot></slot>
           </li>
           <li class="nav-item">
             <a
               target="_self"
-              href="http://localhost:5000/auth/logout"
+              href="https://zerobudget.herokuapp.com/auth/logout"
               class="btn logout"
               >Logout</a
             >
@@ -39,12 +37,12 @@
 
 <script>
 export default {
-  name: "navbarCheck",
+  name: "navBar",
 };
 </script>
 
 <style scoped>
-.mybudg {
+.create {
   text-decoration: underline;
 }
 

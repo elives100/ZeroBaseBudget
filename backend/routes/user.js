@@ -14,21 +14,21 @@ router.get(
 
 router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
   console.log("redirected to home");
-  // if (process.env.NODE_ENV === "production") {
-  res.redirect("https://zerobudget.herokuapp.com/userprofile");
-  /*} else {
+  if (process.env.NODE_ENV === "production") {
+    res.redirect("https://zerobudget.herokuapp.com/userprofile");
+  } else {
     res.redirect("http://localhost:8080/userprofile");
-  }*/
+  }
 });
 
 //Logout
 router.get("/logout", (req, res) => {
   req.session.destroy(() => {
-    //  if (process.env.NODE_ENV === "production") {
-    res.redirect("https://zerobudget.herokuapp.com/");
-    /*  } else {
+    if (process.env.NODE_ENV === "production") {
+      res.redirect("https://zerobudget.herokuapp.com/");
+    } else {
       res.redirect("http://localhost:8080/");
-    }*/
+    }
   });
 });
 

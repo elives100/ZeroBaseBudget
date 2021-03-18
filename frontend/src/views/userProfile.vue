@@ -1,31 +1,38 @@
 <template>
   <div id="app" class="profilePage">
-    <component :is="component"></component>
-    
-     <expense-form v-if="component === 'navbar-check' " ></expense-form>
-       <div class="col" v-else>
-         <div class="panel">
-          <panel></panel>
-         </div>
-          <div class="createButton mt-5">
-          <router-link class="goToForm" tag="button" to="/budgetform"
-            >Create Budget</router-link
-          >
-          </div>
-        </div>
+    <nav-bar>
+      <router-link
+        v-if="component === 'navbar-check'"
+        class="nav-link mybudg"
+        to="/mybudget"
+        >My Budget</router-link
+      >
+      <router-link v-else class="nav-link mybudg" to="/budgetform"
+        >Create Budget</router-link
+      >
+    </nav-bar>
+    <expense-form v-if="component === 'navbar-check'"></expense-form>
+    <div class="col" v-else>
+      <div class="panel">
+        <panel></panel>
       </div>
+      <div class="createButton mt-5">
+        <router-link class="goToForm" tag="button" to="/budgetform"
+          >Create Budget</router-link
+        >
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
 import axios from "axios";
-import exForm from "../components/expForm.vue"
-import navbarCheck from "../components/navbars/navCheck.vue";
-import navCreate from "../components/navbars/navCreate.vue";
+import exForm from "../components/expForm.vue";
+import navbar from "../components/navbar.vue";
 export default {
   components: {
-    "navbar-check": navbarCheck,
-    "navbar": navCreate,
-    "expense-form": exForm
+    "nav-bar": navbar,
+    "expense-form": exForm,
   },
   data() {
     return {
@@ -33,7 +40,7 @@ export default {
     };
   },
   methods: {},
-    beforeRouteEnter(to, from, next) {
+  beforeRouteEnter(to, from, next) {
     axios
       .get("/api/budget", {
         headers: { "Content-Type": "application/json" },
@@ -42,11 +49,12 @@ export default {
       .then((res) => {
         next((vm) => {
           console.log("it works");
-          if (res.data.budget.length > 0) {       
+          if (res.data.budget.length > 0) {
             vm.component = "navbar-check";
-            console.log(res);
+            console.log("if");
           } else {
             vm.component = "navbar";
+            console.log("else");
           }
         });
       })
@@ -61,14 +69,14 @@ export default {
 </script>
 
 <style scoped>
-.profilePage{
+.profilePage {
   min-height: 100vh;
   background-color: rgb(239, 235, 243);
-  display: flex;  
+  display: flex;
   flex-direction: column;
 }
 
-.col{
+.col {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -82,7 +90,4 @@ export default {
   border-radius: 20px;
   box-shadow: 3px 3px 3px rgb(25, 26, 25);
 }
-
-
-
 </style>
