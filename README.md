@@ -26,3 +26,11 @@ Frontend
 2. For this Vue.js project use npm run serve
 
 Both server should run simutaneously
+
+***This app uses Google Oauth***
+
+So create project inn the Google Api Console and copy the ```api secret``` and ```api clientID``` into the GoogleStraategy inside ```backend/config/passport.js``` file.  
+
+***This app uses expressionSession***
+
+Create an string  ```sessions.secret``` which will be stored as a password in file ```backend/app.js```
