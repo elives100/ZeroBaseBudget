@@ -2,6 +2,10 @@
 
 For any question, I will be glad to help e.liv2know@gmail.com
 
+This repo has a state folder inside `./src`
+
+The current `myBudget` vue is currently being worked on
+
 **Overview**
 
 Zero Base Budget is the concept of allocating all of your monthly payment to some expense. If you have monthly payments left over it has to go toward something. Hence, monthly payments - expenses = 0.
