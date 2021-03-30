@@ -210,7 +210,11 @@ export default {
 
 <style scoped>
 .app {
-  background-color: rgba(70, 88, 57, 0.253);
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(90, 133, 80),
+    rgb(157, 158, 97)
+  );
   height: 100vh;
 }
 
