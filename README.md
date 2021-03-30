@@ -10,7 +10,7 @@ This app has a backend folder which holds the server side code and the frontend 
 
 Locally these two folder communicate with each other through http request and html link for Passport/Oauth in src/views/Login.vue
 
-Getting Started
+**Getting Started**
 
 Backend
 
