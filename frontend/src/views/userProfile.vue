@@ -71,7 +71,7 @@ export default {
 <style scoped>
 .profilePage {
   min-height: 100vh;
-  background-color: rgb(239, 235, 243);
+  background-color: rgba(94, 121, 73, 0.61);
   display: flex;
   flex-direction: column;
 }
@@ -89,5 +89,6 @@ export default {
   border: 1px;
   border-radius: 20px;
   box-shadow: 3px 3px 3px rgb(25, 26, 25);
+  background-color: rgba(245, 222, 179, 0.479);
 }
 </style>

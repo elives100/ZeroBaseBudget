@@ -2,7 +2,7 @@
   <div class="app">
     <navbar></navbar>
 
-    <div class="mt-2">
+    <div class="pt-4">
       <h1>Budget Form</h1>
       <hr />
       <div class="container-fluid">
@@ -167,6 +167,11 @@ export default {
 </script>
 
 <style scoped>
+.app {
+  background-color: rgba(94, 121, 73, 0.61);
+  height: 100vh;
+}
+
 .warning {
   margin-bottom: 15px;
 }

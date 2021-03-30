@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="app">
     <navbar-check></navbar-check>
 
     <div v-if="errored">
@@ -212,6 +212,9 @@ export default {
 </script>
 
 <style scoped>
+.app {
+  background-color: rgba(94, 121, 73, 0.61);
+}
 .inputKey,
 .inputValue {
   max-width: 150px;
@@ -273,7 +276,6 @@ export default {
 }
 
 .row {
-  background-color: rgba(71, 221, 11, 0.171);
   display: flex;
   justify-content: center;
 }
