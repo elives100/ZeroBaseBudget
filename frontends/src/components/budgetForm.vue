@@ -15,7 +15,6 @@
             v-int
           />
         </div>
-        <div></div>
         <div class="container-fluid">
           <div class="form-group col-md-12 col-sm-12 addDelete">
             <button class="btn addExpense" type="button" @click="addInputs">
@@ -139,18 +138,26 @@ export default {
   );
   border-radius: 30px;
   width: 300px;
+  box-shadow: 1px 1px 2px 2px rgb(44, 41, 41);
 }
 
 .submitButton {
-  background-color: rgb(9, 17, 129);
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(80, 88, 133),
+    rgb(125, 126, 81)
+  );
   color: wheat;
   box-shadow: 1px 1px 2px 2px rgb(44, 41, 41);
 }
 
 .addExpense {
-  background-color: rgb(20, 95, 3);
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(90, 133, 80),
+    rgb(125, 126, 81)
+  );
   color: wheat;
-  padding: 4px;
   box-shadow: 1px 1px 2px 2px rgb(44, 41, 41);
 }
 

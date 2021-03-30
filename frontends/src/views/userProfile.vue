@@ -1,48 +1,12 @@
 <template>
   <div id="app" class="profilePage">
-    <!--  <div class="yourBalance">
-      Your monthly balance
-      <br />
-      <span :class="{ negativeAmount: userEarnings <= 0 }"
-        >${{ userEarnings }}</span
-      >
-    </div>-->
-
-    <!--  <form action>
-      <div v-for="(expense, index) in expenseButton" :key="index">
-        <expense-button
-          @input="checkIt(expense)"
-          @deleted="tryIt(expense)"
-          @confirm="confirmExpense(expense)"
-          @undoExpense="undoButton(expense)"
-          v-model.number="expense.subExpense"
-          :expense="expense"
-          :earnings="earnings"
-        ></expense-button>
-
-        <div>
-          <p>Amount Left</p>
-          <p :class="{ negativeAmount: expense.expensesValue <= 0 }">
-            ${{ expense.expensesValue }}
-          </p>
-        </div>
-      </div>
-      <div class="submitClass">
-        <input
-          v-if="showSubmit"
-          @click="updateBudget()"
-          type="submit"
-          value="Submit"
-        />
-      </div>
-    </form>-->
-    <!-- <expense-button></expense-button>-->
     <div class="container">
-      <h1>{{ userName }}</h1>
-      <p>{{ earnings }}</p>
-
-      <div class="formContainer">
-        <table class="table table-striped table-hover">
+      <div class="header my-5">
+        <h1>{{ userName }}</h1>
+        <p>{{ earnings }}</p>
+      </div>
+      <div class="formContainer p-2">
+        <table class="table table-borderless table-hover">
           <thead>
             <tr>
               <th>Number</th>
@@ -66,7 +30,7 @@
                 />
                 <button
                   v-if="index === hidden"
-                  class="ml-2"
+                  class="btn btn-outline-dark ml-2"
                   @click="changeValue(expense)"
                 >
                   confirm
@@ -74,7 +38,9 @@
               </td>
             </tr>
           </tbody>
-          <button @click="confirmExpense">Submit</button>
+          <button class="btn btn-outline-dark" @click="confirmExpense">
+            Submit
+          </button>
         </table>
       </div>
     </div>
@@ -186,10 +152,31 @@ export default {
   height: 100vh;
   display: flex;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(90, 133, 80),
+    rgb(157, 158, 97)
+  );
 }
+
 .formContainer {
-  box-shadow: 3px 3px 3px 3px grey;
+  box-shadow: 1px 1px 2px 2px rgb(44, 41, 41);
+  border-radius: 25px;
+  background-image: linear-gradient(
+    to top left,
+    rgb(90, 133, 80),
+    rgb(157, 158, 97)
+  );
+}
+
+button {
+  box-shadow: 1px 1px 2px 2px rgb(44, 41, 41);
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(90, 133, 80),
+    rgb(157, 158, 97)
+  );
 }
 
 .hidden {

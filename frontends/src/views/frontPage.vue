@@ -52,6 +52,11 @@ export default {
 <style scoped>
 .frontPage {
   height: 100vh;
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(90, 133, 80),
+    rgb(157, 158, 97)
+  );
 }
 
 .container-fluid {

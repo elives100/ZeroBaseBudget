@@ -28,10 +28,10 @@ export const store = new Vuex.Store({
   getters: {
     earnings: (state) => {
       return state.expenseProfile.budget[0].earnings;
-    } /*
+    },
     expenseData: (state) => {
       return state.expenseProfile.budget[0].expenses;
-    } */,
+    },
     subTracker(state) {
       return state.expenseProfile.budget[0].expenses.reduce((acc, curr) => {
         acc += Number(curr.subExpense);
@@ -92,6 +92,7 @@ export const store = new Vuex.Store({
   mutations: {
     GRAB_BUDGET: (state, payload) => (state.expenseProfile = payload),
     SUBMIT_BUDGET: (state, payload) => (state.newBudget = payload),
+    DELETE_BUDGET: (state, payload) => (state.newBudget = payload),
     ADD_EXPENSEINPUT: (state) => state.expenses.push({ ...expenseObj }),
     DELETE_EXPENSEINPUT: (state) => state.expenses.pop(),
     UPDATE_EARNINGS(state, earnings) {
@@ -121,6 +122,10 @@ export const store = new Vuex.Store({
     UPDATE_EXPENSE(state, payload) {
       state.expenseProfile.budget[0].expenses = payload.updExpense;
       state.expenseProfile.budget[0].earnings = payload.updEarnings;
+    },
+    DELETE_EXPENSE(state, payload) {
+      state.expenseProfile.budget[0].expenses.splice(payload.index, 1);
+      state.expenseProfile.budget[0].earnings = payload.earnings;
     },
   },
 });

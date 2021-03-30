@@ -1,97 +1,27 @@
 <template>
-  <div>
-    <navbar-check></navbar-check>
-
-    <div v-if="errored">
+  <div id="app">
+    <!--  <div v-if="errored">
       <p>
         We're sorry, we're not able to process your request, please try back
         later
       </p>
-    </div>
-    <div v-else>
-      <h1>My Budget</h1>
+    </div>-->
+    <div class="rootCont">
+      <h1 class="pt-5">My Budget</h1>
       <hr />
-      <div class="container py-3 mb-4">
-        <p v-cloak class="mt-1 myincome">Montly Income</p>
-        <p>${{ earnings }}</p>
-
-        <div>
-          <div class="addContainer mb-2">
-            <button
-              @click="editButton = !editButton"
-              class="btn editBtn"
-              type="button"
-              v-if="editButton"
-            >
-              Edit
-            </button>
-            <button
-              v-if="!editButton"
-              @click="addExpense()"
-              class="addButton mr-5 btn"
-            >
-              +
-            </button>
-            <button
-              v-if="!editButton"
-              @click="deleteExpense(idx)"
-              class="deleteButton btn "
-            >
-              -
-            </button>
-          </div>
-          <div class="row py-3">
-            <div class="" v-for="(expense, idx) in myExpenses" :key="idx">
+      <div class="container p-3">
+        <div class="earning">$ {{ earnings }} - {{ addExpenseValue }}</div>
+        <div class="expContainer">
+          <div v-for="(expense, idx) in expenseData" :key="idx">
+            <div class="list-group py-3">
               <expense-panel
-                v-model.number="expense.expensesValue"
-                :expense="expense"
-                :myExpenses="myExpenses"
-                :showInput="showInput"
-                :showDelete="showDelete"
-                @deleteOne="deleteFinalized(idx)"
-              >
-                <input
-                  class="inputKey"
-                  slot="inputKey"
-                  placeholder="Expense Name"
-                  v-model="expense.expensesKey"
-                  v-if="showInput && idx === myExpenses.length - 1"
-                  type="text"
-                  name="newInput"
-                />
-                <input
-                  class="inputValue"
-                  slot="inputValue"
-                  placeholder="Expense Amount"
-                  v-model.number="expense.expensesValue"
-                  v-if="showInput && idx === myExpenses.length - 1"
-                  type="number"
-                  name="newInput"
-                />
-              </expense-panel>
-              <button
-                class="confirmBtn btn "
-                @click="confirmExpense(idx)"
-                slot="confirmButton"
-                v-if="showInput && idx === myExpenses.length - 1"
-              >
-                Confirm
-              </button>
+                :keys="expense.expensesKey"
+                :values="expense.expensesValue"
+                :idx="idx"
+              ></expense-panel>
             </div>
           </div>
-        </div>
-        <div class="mt-3">
-          <button
-            :disabled="myExpenses.length < 1"
-            class="btn submitButton"
-            @click="submitBudget()"
-            type="submit"
-          >
-            Submit
-          </button>
-          <button class="btn deleteAll m-2" @click="deleteBudget()">
-            Delete All
-          </button>
+          <button @click="add()">jddj</button>
         </div>
       </div>
     </div>
@@ -99,8 +29,8 @@
 </template>
 
 <script>
-import axios from "axios";
-import ExpensePanel from "../components/expensePanel.vue";
+//import axios from "axios";
+import ExpensePanel from "../components/expenseItem.vue";
 
 export default {
   components: {
@@ -108,73 +38,34 @@ export default {
   },
   name: "myBudget",
   data() {
-    return {
-      myExpenses: [],
-      earnings: null,
-      identifier: "",
-      errored: "",
-      showInput: false,
-      showDelete: false,
-      showSubmit: false,
-      editButton: true,
-    };
+    return {};
+  },
+  mounted() {
+    this.$store.dispatch("loadExpenses");
   },
   methods: {
-    deleteExpense() {
-      this.showDelete = !this.showDelete;
-    },
-    deleteFinalized(idx) {
-      if (this.showDelete === true) {
-        if (
-          confirm(
-            "Are you sure you want to delete expense. You can not undo changes"
-          )
-        ) {
-          this.myExpenses.splice(idx, 1);
-          this.showDelete = false;
-          this.earnings = this.addAllExpenses;
-        }
-      }
-    },
-    addExpense() {
-      this.myExpenses.push({
+    add() {
+      this.expenseData.push({
         expensesKey: "",
         expensesValue: null,
         subExpense: null,
       });
-      this.showInput = true;
-      this.showDelete = false;
-    },
-    confirmExpense() {
-      this.showInput = false;
-      this.earnings = this.addAllExpenses;
-    },
-    deleteBudget() {
-      axios
-        .post("/api/budget/delete", {
-          id: this.identifier,
-        })
-        .then(() => {
-          this.$router.push("/userprofile");
-        });
-    },
-    submitBudget() {
-      axios
-        .put("/api/budget", {
-          id: this.identifier,
-          earning: this.earnings,
-          expense: this.myExpenses,
-        })
-        .then(() => {
-          this.$router.push("/userprofile");
-        })
-        .catch((err) => {
-          this.errored2 = true;
-          this.errored = err;
-        });
     },
   },
   computed: {
+    earnings() {
+      return this.$store.state.expenseProfile.budget[0].earnings;
+    },
+    expenseData() {
+      return this.$store.state.expenseProfile.budget[0].expenses;
+    },
+    addExpenseValue() {
+      return this.expenseData.reduce((acc, curr) => {
+        acc += Number(curr.expensesValue);
+        return acc;
+      }, 0);
+    },
+    /*
     addAllExpenses() {
       return this.myExpenses.reduce((acc, curr) => {
         acc += Number(curr.expensesValue);
@@ -200,12 +91,20 @@ export default {
           console.log(err.response);
           vm.errored = true;
         });
-      });
+      });*/
   },
 };
 </script>
 
 <style scoped>
+#app {
+  height: 100vh;
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(90, 133, 80),
+    rgb(157, 158, 97)
+  );
+}
 .container {
   background-image: linear-gradient(
     to top left,
@@ -213,38 +112,9 @@ export default {
     rgb(157, 158, 97)
   );
   border-radius: 30px;
-}
-.inputKey,
-.inputValue {
-  max-width: 150px;
+  box-shadow: 1px 1px 2px 2px rgb(44, 41, 41);
 }
 
-.myincome {
-  font-size: 21px;
-}
-
-.addContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.addButton {
-  height: 35px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  background-color: rgb(9, 17, 129);
-  color: wheat;
-}
-
-.deleteButton {
-  height: 35px;
-  display: flex;
-  align-items: center;
-  background-color: rgb(104, 0, 0);
-  color: wheat;
-}
 .deleteAll {
   background-color: rgb(104, 0, 0);
   color: wheat;
