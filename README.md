@@ -31,6 +31,8 @@ Frontend
 
 Both server should run simutaneously
 
+
+
 ***This app use Google Oauth***
 1. Create project in the Google Api Console
 
@@ -38,12 +40,12 @@ Both server should run simutaneously
 
   **Authorized redirect URIs**: backend local server url *ex: http://localhost:5000/auth/google/redirect*
   
-2. Copy the ```api secret``` and ```api clientID``` into the .env-test ```backend/.env``` file.  
+2. Copy the ```api secret``` and ```api clientID``` into the **.env-test** ```backend/.env-test``` file.  
 
 
 ***This app use expressionSession***
 
-Create an string  ```sessions.secret``` in .env-test which will be stored as a password in file ```backend/app.js```
+Create an string  ```sessions.secret``` in **.env-test** which will be stored as a password in file ```backend/app.js```
 
 ***This app use MongoDb***
 
