@@ -1,7 +1,5 @@
 <template>
   <div class="app">
-    <navbar-check></navbar-check>
-
     <div v-if="errored">
       <p>
         We're sorry, we're not able to process your request, please try back
@@ -10,7 +8,7 @@
     </div>
     <div v-else>
       <div class="container"></div>
-      <h1>My Budget</h1>
+      <h1 class="pt-4">My Budget</h1>
       <hr />
       <div class="container monthly">
         <p v-cloak class="mt-2 myincome">Montly Income</p>
@@ -107,7 +105,6 @@
 <script>
 import axios from "axios";
 import ExpensePanel from "../components/expensePanel.vue";
-
 export default {
   components: {
     "expense-panel": ExpensePanel,
@@ -213,8 +210,14 @@ export default {
 
 <style scoped>
 .app {
-  background-color: rgba(94, 121, 73, 0.61);
+  background-color: rgba(70, 88, 57, 0.253);
+  height: 100vh;
 }
+
+.nav-link {
+  color: wheat;
+}
+
 .inputKey,
 .inputValue {
   max-width: 150px;

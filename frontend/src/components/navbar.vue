@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <nav class="navbar navbar-expand-sm">
     <div class="navbar-brand">Budgeting App</div>
 
     <div class="container">
@@ -42,6 +42,13 @@ export default {
 </script>
 
 <style scoped>
+.navbar {
+  background-image: linear-gradient(
+    to top left,
+    rgb(90, 133, 80),
+    rgb(157, 158, 97)
+  );
+}
 .create {
   text-decoration: underline;
 }

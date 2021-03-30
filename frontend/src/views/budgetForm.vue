@@ -168,7 +168,7 @@ export default {
 
 <style scoped>
 .app {
-  background-color: rgba(94, 121, 73, 0.61);
+  background-color: rgba(70, 88, 57, 0.253);
   height: 100vh;
 }
 
