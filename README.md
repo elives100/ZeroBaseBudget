@@ -4,7 +4,7 @@ For any question, I will be glad to help e.liv2know@gmail.com
 
 This repo has a state folder inside `./src`
 
-The current `myBudget` vue is currently being worked on
+The current `myBudget` view is currently being worked on
 
 **Overview**
 
