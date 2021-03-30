@@ -36,9 +36,9 @@ Both server should run simutaneously
 ***This app use Google Oauth***
 1. Create project in the Google Api Console
 
- **Redirect Uri**: frontend local server url *ex: http://localhost:8080* 
+ *Redirect Uri*: frontend local server url *ex: http://localhost:8080* 
 
-  **Authorized redirect URIs**: backend local server url *ex: http://localhost:5000/auth/google/redirect*
+  *Authorized redirect URIs*: backend local server url *ex: http://localhost:5000/auth/google/redirect*
   
 2. Copy the ```api secret``` and ```api clientID``` into the .env-test ```backend/.env-test``` file.  
 
