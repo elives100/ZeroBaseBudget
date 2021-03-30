@@ -1,6 +1,6 @@
 # ZeroBaseBudget
 
-*Upgrade branch had Vuex Store and new ui implementation and is currently being worked on*
+*Upgrade branch (most current branch in progress) has Vuex Store and new ui implementation*
 
 For any question, I will be glad to help e.liv2know@gmail.com
 
