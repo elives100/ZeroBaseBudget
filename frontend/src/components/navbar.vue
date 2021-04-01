@@ -24,7 +24,7 @@
           <li class="nav-item">
             <a
               target="_self"
-              href="https://zerobudget.herokuapp.com/auth/logout"
+              href="https://localhost:8080/auth/logout"
               class="btn logout"
               >Logout</a
             >

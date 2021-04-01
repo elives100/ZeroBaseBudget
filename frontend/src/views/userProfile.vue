@@ -27,7 +27,6 @@
 
 <script>
 import axios from "axios";
-import exForm from "../components/expForm.vue";
 import navbar from "../components/navbar.vue";
 export default {
   components: {

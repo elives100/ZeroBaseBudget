@@ -9,7 +9,7 @@
           <h5 class="card-title">Sign In</h5>
           <a
             class="btn btn-outline-dark"
-            href="https://zerobudget.herokuapp.com/auth/usergoogle"
+            href="https://localhost:8080/auth/usergoogle"
             style="text-transform: none"
           >
             <img
