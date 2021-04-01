@@ -1,6 +1,6 @@
 # ZeroBaseBudget
 
-*Production branch that routes to heroku application zerobudget.herokuapp.com/*
+*Production branch that routes to heroku application* zerobudget.herokuapp.com
 
 For any question, I will be glad to help e.liv2know@gmail.com
 
