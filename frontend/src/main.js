@@ -4,11 +4,12 @@ import "./registerServiceWorker";
 import router from "./router";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import onlyInt from "vue-input-only-number";
 import Panels from "./components/panel.vue";
 
 Vue.component("panel", Panels);
 
+Vue.use(onlyInt);
 Vue.config.productionTip = false;
 
 new Vue({
