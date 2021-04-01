@@ -1,6 +1,8 @@
 # ZeroBaseBudget
 
-*Upgrade branch (most current branch in progress) has Vuex Store and new ui implementation*
+https://zerobudget.herokuapp.com
+
+*Production branch that routes to heroku application* 
 
 For any question, I will be glad to help e.liv2know@gmail.com
 
@@ -32,24 +34,3 @@ Frontend
 Both server should run simutaneously
 
 
-
-***This app use Google Oauth***
-1. Create project in the Google Api Console
-
- *Redirect Uri*: frontend local server url *ex: http://localhost:8080* 
-
-  *Authorized redirect URIs*: backend local server url *ex: http://localhost:5000/auth/google/redirect*
-  
-2. Copy the ```api secret``` and ```api clientID``` into the .env-test ```backend/.env-test``` file.  
-
-
-***This app use expressionSession***
-
-Create an string  ```sessions.secret``` in .env-test which will be stored as a password in file ```backend/app.js```
-
-***This app use MongoDb***
-
-1. create a mongo account in **Atlas**
-2. build a **new cluster**
-3. Connect to the application
-4. Update the DB_CONNTECTION in .env-test file
