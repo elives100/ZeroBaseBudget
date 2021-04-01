@@ -5,6 +5,7 @@
 For any question, I will be glad to help e.liv2know@gmail.com
 
 **Overview**
+https://zerobudget.herokuapp.com
 
 Zero Base Budget is the concept of allocating all of your monthly payment to some expense.  If you have monthly payments left over it has to go toward something.  Hence,   monthly payments - expenses = 0.
 
@@ -29,6 +30,8 @@ Frontend
 
 2. For this Vue.js project use npm run serve
 
+3. Change the link on line 12 in `login.vue` file in `/src/views/login.vue` to to your local server uri
+
 Both server should run simutaneously
 
 
@@ -38,7 +41,7 @@ Both server should run simutaneously
 
  *Redirect Uri*: frontend local server url *ex: http://localhost:8080* 
 
-  *Authorized redirect URIs*: backend local server url *ex: http://localhost:5000/auth/google/redirect*
+ *Authorized redirect URIs*: backend local server url *ex: http://localhost:5000/auth/google/redirect*
   
 2. Copy the ```api secret``` and ```api clientID``` into the .env-test ```backend/.env-test``` file.  
 
