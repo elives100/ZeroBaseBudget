@@ -2,8 +2,7 @@
   <div>
     <form>
       <div class="form-group">
-        <label for="monthlypay">Monthly pay {{ identifier }}</label>
-        {{ identifier }}
+        <label for="monthlypay">Monthly pay </label>
         <br />
         <input
           class="w-10"
