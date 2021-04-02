@@ -7,82 +7,76 @@
       </p>
     </div>
     <div v-else>
-      <div class="container"></div>
       <h1 class="pt-4">My Budget</h1>
       <hr />
-      <div class="container monthly">
+      <div class="monthly">
         <p v-cloak class="mt-2 myincome">Montly Income</p>
         <p>${{ earnings }}</p>
       </div>
-
-      <div class="container-fluid">
-        <div class="addContainer mb-2">
-          <button
-            @click="editButton = !editButton"
-            class="btn editBtn"
-            type="button"
-            v-if="editButton"
+      <div class="addContainer mb-2">
+        <button
+          @click="editButton = !editButton"
+          class="btn editBtn"
+          type="button"
+          v-if="editButton"
+        >
+          Edit
+        </button>
+        <button
+          v-if="!editButton"
+          @click="addExpense()"
+          class="addButton mr-5 btn"
+        >
+          +
+        </button>
+        <button
+          v-if="!editButton"
+          @click="deleteExpense(idx)"
+          class="deleteButton btn "
+        >
+          -
+        </button>
+      </div>
+      <div class="budgCont">
+        <div v-for="(expense, idx) in myExpenses" :key="idx">
+          <expense-panel
+            v-model.number="expense.expensesValue"
+            :expense="expense"
+            :myExpenses="myExpenses"
+            :showInput="showInput"
+            :showDelete="showDelete"
+            @deleteOne="deleteFinalized(idx)"
           >
-            Edit
-          </button>
-          <button
-            v-if="!editButton"
-            @click="addExpense()"
-            class="addButton mr-5 btn"
-          >
-            +
-          </button>
-          <button
-            v-if="!editButton"
-            @click="deleteExpense(idx)"
-            class="deleteButton btn "
-          >
-            -
-          </button>
-        </div>
-        <div class="row">
-          <div
-            class="column col-lg-4 col-md-4 mb-3"
-            v-for="(expense, idx) in myExpenses"
-            :key="idx"
-          >
-            <expense-panel
-              v-model.number="expense.expensesValue"
-              :expense="expense"
-              :myExpenses="myExpenses"
-              :showInput="showInput"
-              :showDelete="showDelete"
-              @deleteOne="deleteFinalized(idx)"
-            >
-              <input
-                class="inputKey"
-                slot="inputKey"
-                placeholder="Expense Name"
-                v-model="expense.expensesKey"
-                v-if="showInput && idx === myExpenses.length - 1"
-                type="text"
-                name="newInput"
-              />
-              <input
-                class="inputValue"
-                slot="inputValue"
-                placeholder="Expense Amount"
-                v-model.number="expense.expensesValue"
-                v-if="showInput && idx === myExpenses.length - 1"
-                type="number"
-                name="newInput"
-              />
-            </expense-panel>
-            <button
-              class="confirmBtn btn "
-              @click="confirmExpense(idx)"
-              slot="confirmButton"
+            <input
+              class="inputKey"
+              slot="inputKey"
+              placeholder="Expense Name"
+              v-model="expense.expensesKey"
               v-if="showInput && idx === myExpenses.length - 1"
-            >
-              Confirm
-            </button>
-          </div>
+              type="text"
+              name="newInput"
+            />
+            <input
+              class="inputValue"
+              slot="inputValue"
+              placeholder="Expense Amount"
+              v-model.number="expense.expensesValue"
+              v-if="showInput && idx === myExpenses.length - 1"
+              type="number"
+              name="newInput"
+            />
+          </expense-panel>
         </div>
+      </div>
+      <div>
+        <button
+          class="confirmBtn btn "
+          @click="confirmExpense(idx)"
+          slot="confirmButton"
+          v-if="showInput && idx === myExpenses.length - 1"
+        >
+          Confirm
+        </button>
       </div>
       <div class="mt-5">
         <button class="btn deleteAll" @click="deleteBudget()">
@@ -215,11 +209,15 @@ export default {
     rgb(90, 133, 80),
     rgb(157, 158, 97)
   );
-  height: 100vh;
+  height: 100%;
 }
 
-.nav-link {
-  color: wheat;
+.budgCont {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3em;
+  padding-left: 5em;
+  padding-right: 5em;
 }
 
 .inputKey,
@@ -262,35 +260,18 @@ export default {
   color: wheat;
 }
 
-.submitButton {
-  background-color: rgb(9, 17, 129);
-  color: wheat;
-  margin-bottom: 50px;
-}
-
-.confirmBtn {
-  background-color: rgb(9, 17, 129);
-  color: wheat;
-}
-
+.submitButton,
+.confirmBtn,
 .editBtn {
   background-color: rgb(9, 17, 129);
   color: wheat;
+  margin-bottom: 50px;
 }
 
 ::placeholder {
   font-style: italic;
 }
 
-.row {
-  display: flex;
-  justify-content: center;
-}
-
 @media only screen and (max-width: 414px) {
-  .column {
-    display: flex;
-    justify-content: center;
-  }
 }
 </style>

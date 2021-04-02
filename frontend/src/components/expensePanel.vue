@@ -54,14 +54,13 @@ export default {
 }
 
 .deleteMe {
-  border-color: rgb(192, 20, 20);
   border-width: 1.5px;
   cursor: pointer;
-  box-shadow: 3px 3px 3px rgb(25, 26, 25);
+  box-shadow: 10px 10px 10px rgb(25, 26, 25);
 }
 
 .highlightIt {
-  border-color: rgb(20, 20, 20);
+  border-color: rgb(223, 10, 10);
 }
 
 @media only screen and (max-width: 414px) {

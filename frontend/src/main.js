@@ -6,12 +6,14 @@ import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import onlyInt from "vue-input-only-number";
 import Panels from "./components/panel.vue";
+import Fragment from "vue-fragment";
 
 Vue.component("panel", Panels);
 
 Vue.use(onlyInt);
-Vue.config.productionTip = false;
+Vue.use(Fragment.Plugin);
 
+Vue.config.productionTip = false;
 new Vue({
   router,
   render: (h) => h(App),
