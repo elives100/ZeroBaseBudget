@@ -1,11 +1,8 @@
 # ZeroBaseBudget
 
-*The upgrade branch (current branch in progress) has Vuex Store and new ui implementation*
+*This project can be accessed locally with this following instructions below*
 
 For any question, I will be glad to help e.liv2know@gmail.com
-
-**Overview**
-https://zerobudget.herokuapp.com
 
 Zero Base Budget is the concept of allocating all of your monthly payment to some expense.  If you have monthly payments left over it has to go toward something.  Hence,   monthly payments - expenses = 0.
 
