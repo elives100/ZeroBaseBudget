@@ -1,6 +1,6 @@
 # ZeroBaseBudget
 
-*This project can be accessed locally with this following instructions below*
+*This project can be ran locally with this following instructions below*
 
 For any question, I will be glad to help e.liv2know@gmail.com
 
